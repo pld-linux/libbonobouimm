@@ -7,10 +7,14 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbonobouimm/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	d563938439ea59004f2bb54ad33e6d5b
+Patch0:		%{name}-gtkmm24.patch
 URL:		http://gtkmm.sourceforge.net/
-BuildRequires:	gtkmm-devel >= 2.2.8
-BuildRequires:	libbonobomm-devel >= 1.3.8
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gtkmm-devel >= 2.4.0
+BuildRequires:	libbonobomm-devel >= 1.3.8-2
 BuildRequires:	libbonoboui-devel >= 2.4.0
+BuildRequires:	libtool >= 2:1.4d
 BuildRequires:	perl-base >= 5.6
 BuildRequires:	pkgconfig
 Requires:	cpp
@@ -27,8 +31,8 @@ Summary:	Header files for libbonobouimm library
 Summary(pl):	Pliki nag³ówkowe biblioteki libbonobouimm
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtkmm-devel >= 2.2.8
-Requires:	libbonobomm-devel >= 1.3.8
+Requires:	gtkmm-devel >= 2.4.0
+Requires:	libbonobomm-devel >= 1.3.8-2
 Requires:	libbonoboui-devel >= 2.4.0
 
 %description devel
@@ -51,11 +55,23 @@ Biblioteki statyczne libbonobouimm.
 
 %prep
 %setup -q
+%patch0 -p1
+
+# force regeneration for libsigc++-2.0
+rm -f bonobomm/servers/{control*,wrap_init.cc}
+rm -f bonobomm/servers/private/control*
+rm -f bonobomm/widgets/{dock*,selector*,wi*,wrap_init.cc}
+rm -f bonobomm/widgets/private/{dock*,selector*,wi*}
 
 %build
 # exceptions and rtti are used in this package --misiek
+%{__libtoolize}
+%{__aclocal} -I scripts
+%{__autoconf}
+%{__automake}
 %configure \
-	--enable-static
+	--enable-maintainer-mode \
+	--enable-static 
 %{__make}
 
 %install
@@ -87,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_libdir}/libbonobouimm-*
-%{_libdir}/gtkmm-*/proc/m4/*
+%{_libdir}/glibmm-*/proc/m4/*
 %{_includedir}/libbonobouimm-2.0
 %{_pkgconfigdir}/*.pc
 %{_examplesdir}/%{name}-%{version}
