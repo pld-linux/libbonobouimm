@@ -1,0 +1,98 @@
+--- libbonobouimm-1.3.7/tools/m4/Makefile.am.orig	Sat Jun 14 11:10:44 2003
++++ libbonobouimm-1.3.7/tools/m4/Makefile.am	Wed May 19 23:01:49 2004
+@@ -11,5 +11,5 @@
+ # than putting them in separate directories and expecting packages
+ # to provide correct m4 include arguments.
+ # We should probably do this properly some time. TODO.
+-tools_m4_includedir = $(libdir)/gtkmm-2.0/proc/m4
++tools_m4_includedir = $(libdir)/glibmm-2.4/proc/m4
+ tools_m4_include_HEADERS = $(files_tools_m4_install)
+--- libbonobouimm-1.3.7/configure.in.orig	Tue Nov 18 00:20:39 2003
++++ libbonobouimm-1.3.7/configure.in	Thu May 20 00:27:34 2004
+@@ -91,7 +91,7 @@
+ LIBBONOBOUI_VERSION_NEEDED=2.0.0
+ AC_SUBST(LIBBONOBOUI_VERSION_NEEDED)
+ 
+-PKG_CHECK_MODULES(LIBBONOBOUIMM, gtkmm-2.0 >= $GTKMM_VERSION_NEEDED libbonobomm-2.0 >= $LIBBONOBOMM_VERSION_NEEDED libbonoboui-2.0 >= $LIBBONOBOUI_VERSION_NEEDED)
++PKG_CHECK_MODULES(LIBBONOBOUIMM, gtkmm-2.4 >= $GTKMM_VERSION_NEEDED libbonobomm-2.0 >= $LIBBONOBOMM_VERSION_NEEDED libbonoboui-2.0 >= $LIBBONOBOUI_VERSION_NEEDED)
+ AC_SUBST(LIBBONOBOUIMM_CFLAGS)
+ AC_SUBST(LIBBONOBOUIMM_LIBS)
+ 
+@@ -106,10 +106,10 @@
+ IDL_CFLAGS_BONOBO="-I/$IDLDIR_LIBBONOBO -I/$IDLDIR_BONOBO_ACTIVATION"
+ AC_SUBST(IDL_CFLAGS_BONOBO)
+ 
+-GTKMM_PREFIX=`pkg-config --variable=prefix gtkmm-2.0`
+-GTKMM_PROCDIR=$GTKMM_PREFIX/lib/gtkmm-2.0/proc
++GTKMM_PREFIX=`pkg-config --variable=prefix gtkmm-2.4`
++GTKMM_PROCDIR=$GTKMM_PREFIX/lib/glibmm-2.4/proc
+ AC_SUBST(GTKMM_PROCDIR)
+-GTKMM_PROC=$GTKMM_PROCDIR/gtkmmproc
++GTKMM_PROC=$GTKMM_PROCDIR/gmmproc
+ AC_SUBST(GTKMM_PROC)
+ 
+ #########################################################################
+--- libbonobouimm-1.3.7/libbonobouimm-2.0-uninstalled.pc.in.orig	Fri Nov  1 23:49:16 2002
++++ libbonobouimm-1.3.7/libbonobouimm-2.0-uninstalled.pc.in	Wed May 19 23:01:21 2004
+@@ -5,7 +5,7 @@
+ 
+ Name: libbonobouimm-2.0
+ Description: C++ wrapper for libbonoboui
+-Requires: gtkmm-2.0 >= @GTKMM_VERSION_NEEDED@  libbonobomm-2.0 >= @LIBBONOBOMM_VERSION_NEEDED@ libbonoboui-2.0 >= @LIBBONOBOUI_VERSION_NEEDED@
++Requires: gtkmm-2.4 >= @GTKMM_VERSION_NEEDED@  libbonobomm-2.0 >= @LIBBONOBOMM_VERSION_NEEDED@ libbonoboui-2.0 >= @LIBBONOBOUI_VERSION_NEEDED@
+ Version: @VERSION@
+ Libs: -L${libdir} -lbonobouimm_widgets-1.3 -lbonobouimm_servers-1.3
+ Cflags: -I${includedir}/libbonobouimm-2.0 -I${libdir}/libbonobouimm-2.0/include
+--- libbonobouimm-1.3.7/libbonobouimm-2.0.pc.in.orig	Mon Aug  5 21:38:09 2002
++++ libbonobouimm-1.3.7/libbonobouimm-2.0.pc.in	Wed May 19 23:01:28 2004
+@@ -5,7 +5,7 @@
+ 
+ Name: libbonobouimm-2.0
+ Description: C++ wrapper for libbonoboui
+-Requires: gtkmm-2.0 >= @GTKMM_VERSION_NEEDED@  libbonobomm-2.0 >= @LIBBONOBOMM_VERSION_NEEDED@ libbonoboui-2.0 >= @LIBBONOBOUI_VERSION_NEEDED@
++Requires: gtkmm-2.4 >= @GTKMM_VERSION_NEEDED@  libbonobomm-2.0 >= @LIBBONOBOMM_VERSION_NEEDED@ libbonoboui-2.0 >= @LIBBONOBOUI_VERSION_NEEDED@
+ Version: @VERSION@
+ Libs: -L${libdir} -lbonobouimm_widgets-1.3 -lbonobouimm_servers-1.3
+ Cflags: -I${includedir}/libbonobouimm-2.0 -I${libdir}/libbonobouimm-2.0/include
+--- libbonobouimm-1.3.7/tools/extra_defs_gen/Makefile.am.orig	Thu Oct 24 21:45:29 2002
++++ libbonobouimm-1.3.7/tools/extra_defs_gen/Makefile.am	Wed May 19 23:28:30 2004
+@@ -2,7 +2,7 @@
+ # This is not used directly to build the rest of the project.
+ 
+ INCLUDES = $(LIBBONOBOUIMM_CFLAGS)
+-LIBS = $(LIBBONOBOUIMM_LIBS) -lgtkmm_generate_extra_defs-2.0
++LIBS = $(LIBBONOBOUIMM_LIBS) -lglibmm_generate_extra_defs-2.4
+ 
+ noinst_PROGRAMS = generate_extra_defs
+ generate_extra_defs_SOURCES = generate_defs_libbonoboui.cc
+--- libbonobouimm-1.3.7/tools/extra_defs_gen/generate_defs_libbonoboui.cc.orig	Sat Apr 13 13:20:40 2002
++++ libbonobouimm-1.3.7/tools/extra_defs_gen/generate_defs_libbonoboui.cc	Wed May 19 23:28:45 2004
+@@ -19,7 +19,7 @@
+  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-#include "gtkmm_generate_extra_defs/generate_extra_defs.h"
++#include "glibmm_generate_extra_defs/generate_extra_defs.h"
+ #include <libbonoboui.h>
+ #include <bonobo/bonobo-ui-config-widget.h>
+ 
+--- libbonobouimm-1.3.7/examples/using_control/examplewindow.cc.orig	Sun Jul 28 16:45:16 2002
++++ libbonobouimm-1.3.7/examples/using_control/examplewindow.cc	Thu May 20 00:36:25 2004
+@@ -18,6 +18,7 @@
+ 
+ #include "examplewindow.h"
+ #include <bonobomm/widgets/selector.h>
++#include <sigc++/compatibility.h>
+ 
+ #include <iostream>
+ 
+--- libbonobouimm-1.3.7/examples/creating_control/controlwidget.cc.orig	Sun Jul 28 20:27:01 2002
++++ libbonobouimm-1.3.7/examples/creating_control/controlwidget.cc	Thu May 20 00:38:55 2004
+@@ -21,6 +21,7 @@
+ #include <gtkmm/button.h>
+ #include <gtkmm/dialog.h>
+ #include <gtkmm/stock.h>
++#include <sigc++/compatibility.h>
+ 
+ ControlWidget::ControlWidget()
+ {
