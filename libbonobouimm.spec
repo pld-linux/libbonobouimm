@@ -5,7 +5,7 @@ Version:	1.3.7
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbonobouimm/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	d563938439ea59004f2bb54ad33e6d5b
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	gtkmm-devel >= 2.2.8
@@ -23,26 +23,25 @@ This package provides a C++ interface for libbonoboui library.
 Ten pakiet dostarcza interfejs C++ dla biblioteki libbonoboui.
 
 %package devel
-Summary:	libbonobouimm header files, development documentation
-Summary(pl):	Pliki nag³ówkowe libbonobouimm, dokumentacja dla programistów
+Summary:	Header files for libbonobouimm library
+Summary(pl):	Pliki nag³ówkowe biblioteki libbonobouimm
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	gtkmm-devel >= 2.2.8
 Requires:	libbonobomm-devel >= 1.3.8
 Requires:	libbonoboui-devel >= 2.4.0
 
 %description devel
-Header files and development documentation for libbonobouimm library.
+Header files for libbonobouimm library.
 
 %description devel -l pl
-Pliki nag³ówkowe i dokumentacja dla programistów dla biblioteki
-libbonobouimm.
+Pliki nag³ówkowe biblioteki libbonobouimm.
 
 %package static
 Summary:	libbonobouimm static libraries
 Summary(pl):	Biblioteki statyczne libbonobouimm
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 libbonobouimm static libraries.
