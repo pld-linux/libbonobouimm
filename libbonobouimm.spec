@@ -3,17 +3,17 @@ Summary:	A C++ interface for the libbonoboui
 Summary(pl):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
 Version:	1.3.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	326a8f73e818569810e96d8cad1ba8d2
 URL:		http://gtkmm.sourceforge.net/
-BuildRequires:	ORBit2-devel >= 2.0.0
+BuildRequires:	ORBit2-devel >= 2.7.5-1
 BuildRequires:	autoconf
 BuildRequires:	gtkmm-devel >= 2.0.0
-BuildRequires:	libbonobomm-devel >= 1.3.5
-BuildRequires:	libbonoboui-devel >= 2.0.0
+BuildRequires:	libbonobomm-devel >= 1.3.5-3
+BuildRequires:	libbonoboui-devel >= 2.3.3-2
 BuildRequires:	orbitcpp-devel >= 1.3.5
 BuildRequires:	perl >= 5.6
 Requires:	cpp
