@@ -1,15 +1,15 @@
 Summary:	A C++ interface for the libbonoboui
 Summary(pl):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
-Version:	1.3.6
-Release:	3
+Version:	1.3.7
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	ce0b37b6a92d6b9607575acae2f07af2
+# Source0-md5:	d563938439ea59004f2bb54ad33e6d5b
 URL:		http://gtkmm.sourceforge.net/
 BuildRequires:	gtkmm-devel >= 2.2.8
-BuildRequires:	libbonobomm-devel >= 1.3.7
+BuildRequires:	libbonobomm-devel >= 1.3.8
 BuildRequires:	libbonoboui-devel >= 2.4.0
 BuildRequires:	perl-base >= 5.6
 BuildRequires:	pkgconfig
@@ -28,7 +28,7 @@ Summary(pl):	Pliki nag³ówkowe libbonobouimm, dokumentacja dla programistów
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gtkmm-devel >= 2.2.8
-Requires:	libbonobomm-devel >= 1.3.7
+Requires:	libbonobomm-devel >= 1.3.8
 Requires:	libbonoboui-devel >= 2.4.0
 
 %description devel
