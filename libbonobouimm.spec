@@ -9,7 +9,6 @@ Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	326a8f73e818569810e96d8cad1ba8d2
 URL:		http://gtkmm.sourceforge.net/
-Requires:	cpp
 BuildRequires:	ORBit2-devel >= 2.0.0
 BuildRequires:	autoconf
 BuildRequires:	gtkmm-devel >= 2.0.0
@@ -17,6 +16,7 @@ BuildRequires:	libbonobomm-devel >= 1.3.5
 BuildRequires:	libbonoboui-devel >= 2.0.0
 BuildRequires:	orbitcpp-devel >= 1.3.5
 BuildRequires:	perl >= 5.6
+Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,13 +61,13 @@ Biblioteki statyczne libbonobouimm.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	pkgconfigdir=%{_pkgconfigdir}
 
-cp -dpr examples/* $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
+cp -dpr examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,18 +82,17 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc README ChangeLog AUTHORS NEWS
-%{_examplesdir}/%{name}-%{version}
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 
 %dir %{_libdir}/libbonobouimm-*
-
 %{_libdir}/libbonobouimm-*/include
 %{_libdir}/libgnomemm-*/proc/m4/*
 
-%{_pkgconfigdir}/*.pc
 %{_includedir}/libbonobouimm-2.0
 %{_includedir}/libgnomemm-2.0/*
+%{_pkgconfigdir}/*.pc
+%{_examplesdir}/%{name}-%{version}
 
 %files static
 %defattr(644,root,root,755)
