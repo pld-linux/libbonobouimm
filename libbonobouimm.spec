@@ -1,6 +1,6 @@
 %include        /usr/lib/rpm/macros.perl
 Summary:	A C++ interface for the libbonoboui
-Summary(pl):	Wrapper C++ dla libbonoboui
+Summary(pl):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
 Version:	1.3.4
 Release:	1
@@ -9,11 +9,11 @@ Group:		X11/Libraries
 Source0:	http://switch.dl.sourceforge.net/sourceforge/gtkmm/%{name}-%{version}.tar.gz
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
+BuildRequires:	ORBit2-devel >= 2.0.0
 BuildRequires:	autoconf
 BuildRequires:	gtkmm-devel >= 2.0.0
-BuildRequires:	ORBit2-devel >= 2.0.0
-BuildRequires:	libbonoboui-devel >= 2.0.0
 BuildRequires:	libbonobomm-devel >= 1.3.3
+BuildRequires:	libbonoboui-devel >= 2.0.0
 BuildRequires:	orbitcpp-devel >= 1.3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package provides a C++ interface for libbonoboui library.
 
 %description -l pl
-Ten pakiet dostarcza interface C++ dla biblioteki libbonoboui.
+Ten pakiet dostarcza interfejs C++ dla biblioteki libbonoboui.
 
 %package devel
 Summary:	libbonobouimm header files, development documentation
@@ -69,6 +69,9 @@ cp -dpr examples/* $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
