@@ -14,7 +14,7 @@ BuildRequires:	gtkmm-devel >= 2.0.0
 BuildRequires:	ORBit2-devel >= 2.0.0
 BuildRequires:	libbonoboui-devel >= 2.0.0
 BuildRequires:	libbonobomm-devel >= 1.3.3
-BuildRequires:	orbitcpp >= 1.3.4
+BuildRequires:	orbitcpp-devel >= 1.3.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
