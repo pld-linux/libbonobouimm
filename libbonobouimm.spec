@@ -14,6 +14,7 @@ BuildRequires:	automake
 BuildRequires:	gtkmm-devel >= 2.4.0
 BuildRequires:	libbonobomm-devel >= 1.3.8-2
 BuildRequires:	libbonoboui-devel >= 2.4.0
+BuildRequires:	libsigc++-devel >= 1:2.0.1
 BuildRequires:	libtool >= 2:1.4d
 BuildRequires:	perl-base >= 5.6
 BuildRequires:	pkgconfig
@@ -72,7 +73,9 @@ rm -f bonobomm/widgets/private/{dock*,selector*,wi*}
 %configure \
 	--enable-maintainer-mode \
 	--enable-static 
-%{__make}
+# examples/creating_control/Makefile.am contains hardcoded "$(prefix)/lib/bonobo-2.0"
+%{__make} \
+	samplesdir=%{_libdir}/bonobo-2.0/samples
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -80,7 +83,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	pkgconfigdir=%{_pkgconfigdir}
+	pkgconfigdir=%{_pkgconfigdir} \
+	samplesdir=%{_libdir}/bonobo-2.0/samples
 
 cp -dpr examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
