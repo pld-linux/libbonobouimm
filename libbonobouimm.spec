@@ -7,6 +7,7 @@ Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	326a8f73e818569810e96d8cad1ba8d2
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	ORBit2-devel >= 2.0.0
