@@ -8,13 +8,11 @@ Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
 # Source0-md5:	ce0b37b6a92d6b9607575acae2f07af2
 URL:		http://gtkmm.sourceforge.net/
-BuildRequires:	ORBit2-devel >= 2.7.6
-BuildRequires:	autoconf
 BuildRequires:	gtkmm-devel >= 2.2.7
 BuildRequires:	libbonobomm-devel >= 1.3.7
 BuildRequires:	libbonoboui-devel >= 2.3.6
-BuildRequires:	orbitcpp-devel >= 1.3.7
-BuildRequires:	perl >= 5.6
+BuildRequires:	perl-base >= 5.6
+BuildRequires:	pkgconfig
 Requires:	cpp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,6 +27,9 @@ Summary:	libbonobouimm header files, development documentation
 Summary(pl):	Pliki nag³ówkowe libbonobouimm, dokumentacja dla programistów
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	gtkmm-devel >= 2.2.7
+Requires:	libbonobomm-devel >= 1.3.7
+Requires:	libbonoboui-devel >= 2.3.6
 
 %description devel
 Header files and development documentation for libbonobouimm library.
@@ -55,7 +56,7 @@ Biblioteki statyczne libbonobouimm.
 %build
 # exceptions and rtti are used in this package --misiek
 %configure \
-	--enable-static=yes
+	--enable-static
 %{__make}
 
 %install
@@ -76,6 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README ChangeLog AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/bonobo-2.0/samples/*
 %{_libdir}/bonobo/servers/*
@@ -83,14 +85,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc README ChangeLog AUTHORS NEWS
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-
-%dir %{_libdir}/libbonobouimm-*
-%{_libdir}/libbonobouimm-*/include
+%{_libdir}/libbonobouimm-*
 %{_libdir}/gtkmm-*/proc/m4/*
-
 %{_includedir}/libbonobouimm-2.0
 %{_pkgconfigdir}/*.pc
 %{_examplesdir}/%{name}-%{version}
