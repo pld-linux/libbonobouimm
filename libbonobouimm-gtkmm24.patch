@@ -25,7 +25,7 @@
 -GTKMM_PREFIX=`pkg-config --variable=prefix gtkmm-2.0`
 -GTKMM_PROCDIR=$GTKMM_PREFIX/lib/gtkmm-2.0/proc
 +GTKMM_PREFIX=`pkg-config --variable=prefix gtkmm-2.4`
-+GTKMM_PROCDIR=$GTKMM_PREFIX/lib/glibmm-2.4/proc
++GTKMM_PROCDIR=`pkg-config --variable=libdir glibmm-2.4`/glibmm-2.4/proc
  AC_SUBST(GTKMM_PROCDIR)
 -GTKMM_PROC=$GTKMM_PROCDIR/gtkmmproc
 +GTKMM_PROC=$GTKMM_PROCDIR/gmmproc
