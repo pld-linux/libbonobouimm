@@ -2,19 +2,20 @@
 Summary:	A C++ interface for the libbonoboui
 Summary(pl):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
-Version:	1.3.4
+Version:	1.3.5
 Release:	1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	http://switch.dl.sourceforge.net/sourceforge/gtkmm/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.3/%{name}-%{version}.tar.bz2
 URL:		http://gtkmm.sourceforge.net/
 Requires:	cpp
 BuildRequires:	ORBit2-devel >= 2.0.0
 BuildRequires:	autoconf
 BuildRequires:	gtkmm-devel >= 2.0.0
-BuildRequires:	libbonobomm-devel >= 1.3.3
+BuildRequires:	libbonobomm-devel >= 1.3.5
 BuildRequires:	libbonoboui-devel >= 2.0.0
-BuildRequires:	orbitcpp-devel >= 1.3.4
+BuildRequires:	orbitcpp-devel >= 1.3.5
+BuildRequires:	perl >= 5.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -85,13 +86,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 
 %dir %{_libdir}/libbonobouimm-*
-%dir %{_libdir}/libgnomemm-*/proc
 
 %{_libdir}/libbonobouimm-*/include
-%{_libdir}/libgnomemm-*/proc/m4
+%{_libdir}/libgnomemm-*/proc/m4/*
 
 %{_pkgconfigdir}/*.pc
-%{_includedir}/*
+%{_includedir}/libbonobouimm-2.0
+%{_includedir}/libgnomemm-2.0/*
 
 %files static
 %defattr(644,root,root,755)
