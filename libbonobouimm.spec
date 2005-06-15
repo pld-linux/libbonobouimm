@@ -1,4 +1,4 @@
-%bcond_without	static	# don't build static library
+%bcond_without	static_libs	# don't build static library
 Summary:	A C++ interface for the libbonoboui
 Summary(pl):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
@@ -74,7 +74,7 @@ rm -f bonobomm/widgets/private/{dock*,selector*,wi*}
 %configure \
 	--enable-maintainer-mode \
 	--enable-static \
-	%{!?with_static:--disable-static}
+	%{!?with_static_libs:--disable-static}
 # examples/creating_control/Makefile.am contains hardcoded "$(prefix)/lib/bonobo-2.0"
 %{__make} \
 	samplesdir=%{_libdir}/bonobo-2.0/samples
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/*.pc
 %{_examplesdir}/%{name}-%{version}
 
-%if %{with static}
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
