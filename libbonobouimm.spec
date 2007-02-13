@@ -2,7 +2,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	A C++ interface for the libbonoboui
-Summary(pl.UTF-8):   Interfejs C++ dla libbonoboui
+Summary(pl.UTF-8):	Interfejs C++ dla libbonoboui
 Name:		libbonobouimm
 Version:	1.3.7
 Release:	3
@@ -32,7 +32,7 @@ Ten pakiet dostarcza interfejs C++ dla biblioteki libbonoboui.
 
 %package devel
 Summary:	Header files for libbonobouimm library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libbonobouimm
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libbonobouimm
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtkmm-devel >= 2.4.0
@@ -47,7 +47,7 @@ Pliki nagłówkowe biblioteki libbonobouimm.
 
 %package static
 Summary:	libbonobouimm static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne libbonobouimm
+Summary(pl.UTF-8):	Biblioteki statyczne libbonobouimm
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
